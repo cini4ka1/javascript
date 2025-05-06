@@ -31,8 +31,13 @@
 
         function drawTable() {
             const rows = parseInt(document.getElementById('rows').value);
-            const sequence = ['dog', 'dog', 'dog', 'cat', 'cat'];
-            const animalsPerRow = 6;
+            const sequence = [
+                ['dog', 'dog', 'dog', 'cat', 'cat', 'dog'],
+                ['dog', 'dog', 'cat', 'cat', 'dog', 'dog'],
+                ['dog', 'cat', 'cat', 'dog', 'dog', 'dog'],
+                ['cat', 'cat', 'dog', 'dog', 'dog', 'cat'],
+                ['cat', 'dog', 'dog', 'dog', 'cat', 'cat']
+            ];
 
             if (isNaN(rows) || rows < 1) {
                 console.log('Пожалуйста, введите корректное число строк.');
@@ -40,11 +45,8 @@
             }
 
             for (let i = 0; i < rows; i++) {
-                let row = '';
-                for (let j = 0; j < animalsPerRow; j++) {
-                    row += sequence[j % sequence.length] + '\t';
-                }
-                console.log(row.trim());
+                const rowIndex = i % sequence.length;
+                console.log(sequence[rowIndex].join('\t'));
             }
         }
     </script>
