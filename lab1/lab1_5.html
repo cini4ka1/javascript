@@ -11,68 +11,95 @@
             margin: 0 auto;
             padding: 20px;
         }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
         .container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
         input {
             padding: 8px;
             width: 100px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
         button {
-            padding: 8px 15px;
-            background-color: #4CAF50;
+            background-color: #3498db;
             color: white;
             border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
             cursor: pointer;
-            width: 120px;
+            font-size: 16px;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #2980b9;
+        }
+        .note {
+            margin-top: 20px;
+            font-style: italic;
+            color: #7f8c8d;
         }
     </style>
 </head>
 <body>
-    <h1>Генератор таблицы животных</h1>
     <div class="container">
-        <label for="rows">Количество строк:</label>
-        <input type="number" id="rows" min="1" value="5">
-        <button onclick="drawTable()">Рисовать</button>
+        <h1>Таблица животных</h1>
+        
+        <label for="rowsInput">Количество строк:</label>
+        <input type="number" id="rowsInput" min="1" value="5">
+        
+        <button id="drawButton">Рисовать</button>
+        
+        <div class="note">
+            Результат будет выведен в консоль браузера (F12 → Console)
+        </div>
     </div>
 
     <script>
-        function drawTable() {
-            const rowsInput = document.getElementById('rows');
+        'use strict';
+        
+        document.getElementById('drawButton').addEventListener('click', function() {
+            const rowsInput = document.getElementById('rowsInput');
             const rows = parseInt(rowsInput.value);
             
-            if (isNaN(rows) || rows < 1) {
-                alert('Пожалуйста, введите корректное число строк (больше 0)');
+            if (isNaN(rows)) {
+                console.error('Пожалуйста, введите число строк');
                 return;
             }
             
+            console.clear();
+            
             const pattern = ['dog', 'dog', 'dog', 'cat', 'cat'];
-            let table = '';
+            let patternIndex = 0;
             
             for (let i = 0; i < rows; i++) {
-                let row = [];
-                
-                const startPos = i % pattern.length;
-                
+                let row = '';
                 
                 for (let j = 0; j < 6; j++) {
-                    const patternIndex = (startPos + j) % pattern.length;
-                    row.push(pattern[patternIndex]);
+                    row += pattern[patternIndex % pattern.length];
+                    
+                    if (j < 5) {
+                        row += '\t';
+                    }
+                    
+                    patternIndex++;
                 }
                 
-               
-                table += row.join('\t') + '\n';
+                console.log(row);
             }
-            
-            
-            console.log(table);
-            alert('Таблица успешно выведена в консоль! Откройте консоль браузера (F12) чтобы увидеть результат.');
-        }
+        });
     </script>
 </body>
 </html>
