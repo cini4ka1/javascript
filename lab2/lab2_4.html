@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Функция factorial</title>
+    <title>Вычисление факториала</title>
     <script src="lab2.js"></script>
 </head>
 <body>
-    <h1>Тестирование функции factorial</h1>
+    <h1>Вычисление факториала</h1>
+    <p>Введите число:</p>
+    <input type="number" id="number" placeholder="Число">
+    <button onclick="calculateFactorial()">Вычислить</button>
+    <p id="result"></p>
+
     <script>
-        console.log("factorial(0) =>", factorial(0)); // 1n
-        console.log("factorial(5) =>", factorial(5)); // 120n
+        function calculateFactorial() {
+            const n = parseInt(document.getElementById('number').value);
+            const result = factorial(n);
+            document.getElementById('result').textContent = `${n}! = ${result}`;
+        }
     </script>
 </body>
 </html>
