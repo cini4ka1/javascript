@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Функция addBlackSpot</title>
+    <script src="lab2.js"></script>
+</head>
+<body>
+    <h1>Тестирование функции addBlackSpot</h1>
+    <script>
+        const obj = {};
+        addBlackSpot(obj);
+        console.log("addBlackSpot({}) =>", obj);
+        console.log("Symbol property:", obj[Symbol.for("blackSpot")]); // true
+    </script>
+</body>
+</html>
