@@ -47,18 +47,17 @@ export function truncate(str, maxlength) {
 }
 
 /**
- * Преобразует строку с дефисами в camelCase
+образует строку с дефисами и подчеркиваниями в camelCase, сохраняя символы в первом слове
  * @param {string} str - Исходная строка
  * @returns {string} Строка в camelCase
  */
 export function camelize(str) {
-    return str.split(/[-_]+/).map((word, index) => {
-        if (index === 0) {
-            return word;
-        }
-        return ucFirst(word);
-    }).join('');
+    // Разделяем только по одиночным дефисам/подчеркиваниям, которые стоят перед буквой
+    return str.replace(/([-_])([a-zA-Z])/g, (_, separator, letter) => {
+        return letter.toUpperCase();
+    });
 }
+
 
 /**
  * Преобразует первую букву строки в верхний регистр
