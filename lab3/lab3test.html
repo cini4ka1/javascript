@@ -100,17 +100,16 @@
 
         });
 
-        describe("camelize", function () {
+       describe("camelize", function () {
+    it("camelize('var-test-text') => 'varTestText'", function () {
+        assert.strictEqual(camelize('var-test-text'), 'varTestText');
+    });
 
-            it("camelize('var-test-text') => 'varTestText'", function () {
-                assert.strictEqual(camelize('var-test-text'), 'varTestText');
-            });
-
-            it("camelize('person__eye--blue') => 'person__eyeBlue'", function () {
-                assert.strictEqual(camelize('person__eye--blue'), 'person__eyeBlue');
-            });
-
-        });
+    it("camelize('person__eye--blue') => 'personEyeBlue'", function () {  
+        assert.strictEqual(camelize('person__eye--blue'), 'personEyeBlue');
+    });
+});
+        
 
         describe("fibs", function () {
 
