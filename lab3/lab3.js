@@ -15,11 +15,11 @@ export function getDecimal(num) {
  */
 export function normalizeUrl(url) {
     if (url.startsWith('http://')) {
-        return https://${url.slice(7)};
+        return 'https://${url.slice(7)}';
     } else if (url.startsWith('https://')) {
         return url;
     } else {
-        return https://${url};
+        return 'https://${url}';
     }
 }
 
