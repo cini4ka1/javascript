@@ -74,7 +74,7 @@ function ucFirst(str) {
  * @param {number} n - Количество чисел Фибоначчи
  * @returns {bigint[]} Массив чисел Фибоначчи
  */
-import { fib } from 'cini4ka1/javascript/lab2/lab2.js'
+import { fib } from 'cini4ka1/javascript/lab2/lab2.js';
 
 
 
