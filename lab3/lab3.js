@@ -67,7 +67,7 @@ function ucFirst(str) {
     return str[0].toUpperCase() + str.slice(1);
 }
 
-import { fib } from './lab2.js';
+import { fib } from 'lab2/lab2.js';
 
 /**
  * Возвращает массив чисел Фибоначчи до n-го (не включая его).
