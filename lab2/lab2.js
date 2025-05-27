@@ -46,13 +46,17 @@ function factorial(n) {
 /**
  * Возвращает n-е число Фибоначчи.
  * @param {number} n - Порядковый номер числа Фибоначчи.
- * @returns {bigint} n-е число Фибоначчи.
+ * @returns {bigint} n-е число Фибоначчи в виде BigInt.
  */
-export function fib(n) {
-    if (n === 0) return 0n;
-    let a = 0n, b = 1n;
+function fib(n) {
+    let a = 0n;
+    let b = 1n;
+    if (n === 0) return a;
+    
     for (let i = 2; i <= n; i++) {
-        [a, b] = [b, a + b];
+        const c = a + b;
+        a = b;
+        b = c;
     }
     return b;
 }
