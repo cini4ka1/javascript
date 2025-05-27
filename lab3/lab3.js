@@ -74,14 +74,17 @@ function ucFirst(str) {
  * @param {number} n - Количество чисел Фибоначчи
  * @returns {bigint[]} Массив чисел Фибоначчи
  */
-export function fibs(n) {
-    if (n <= 0) return [];
-    const result = [0n, 1n];
-    for (let i = 2; i < n; i++) {
-        result.push(result[i-1] + result[i-2]);
+import { fib } from './lab2.js';
+
+function fibs(n) {
+    const result = [];
+    for (let i = 0; i < n; i++) {
+        result.push(fib(i));
     }
-    return result.slice(0, n);
+    return result;
 }
+
+console.log(fibs(5)); // [0n, 1n, 1n, 2n, 3n]
 
 /**
  * Возвращает новый массив, отсортированный по убыванию
