@@ -51,6 +51,23 @@ class Book {
     }
 }
 
+/**
+ * Форматирует объект Date в строку в формате YYYY-MM-DD.
+ * Это гарантирует одинаковый вывод независимо от языковых настроек системы.
+ * @param {Date} date - Объект Date, который нужно отформатировать
+ * @returns {string} Строка с датой в формате YYYY-MM-DD
+ */
+function formatDate(date) {
+    // Получаем компоненты даты
+    const year = date.getFullYear();
+    // Месяцы в JavaScript начинаются с 0 (январь = 0), поэтому добавляем 1
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    
+    // Собираем дату в формате YYYY-MM-DD
+    return `${year}-${month}-${day}`;
+}
+
 try {
     let book1 = new Book('1984', 1949, 1000);
     book1.show();
@@ -71,7 +88,6 @@ try {
         books[i].show();
     }
 
-
     function isEmpty(obj) {
         if (typeof obj !== 'object' || obj === null) return true;
 
@@ -86,8 +102,6 @@ try {
 
     console.log("Объект 1", isEmpty(obj1));
     console.log("Объект 2", isEmpty(obj2));
-
-
 
     let classObject = {
         className: "open menu",
@@ -119,13 +133,11 @@ try {
     classObject.removeClass('menu');
     console.log("className после removeClass('menu'):", classObject.className);
 
-
     let jsonString = JSON.stringify(classObject, null, 2);
     console.log("JSON строка:", jsonString);
 
     let object2 = JSON.parse(jsonString);
     console.log('Сравнение объектов из JSON:', JSON.stringify(object2) === JSON.stringify(classObject));
-
 
     function getSecondsToday() {
         let now = new Date();
@@ -135,25 +147,6 @@ try {
 
     console.log("Секунд с начала дня: ", getSecondsToday());
 
-
-    /**
- * Форматирует объект Date в строку в формате YYYY-MM-DD.
- * Это гарантирует одинаковый вывод независимо от языковых настроек системы.
- * @param {Date} date - Объект Date, который нужно отформатировать
- * @returns {string} Строка с датой в формате YYYY-MM-DD
- */
-function formatDate(date) {
-    // Получаем компоненты даты
-    const year = date.getFullYear();
-    // Месяцы в JavaScript начинаются с 0 (январь = 0), поэтому добавляем 1
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    
-    // Собираем дату в формате YYYY-MM-DD
-    return `${year}-${month}-${day}`;
-}
-
-try {
     let date1 = new Date(2024, 0, 20); 
     let date2 = new Date(2000, 11, 1); 
     let date3 = new Date(1995, 9, 10); 
@@ -163,5 +156,4 @@ try {
     console.log("Дата 3:", formatDate(date3));  // 1995-10-10
 } catch (error) {
     console.error("Произошла ошибка:", error.message);
-}
 }
